@@ -1,14 +1,24 @@
+.textarea {
+    display: block;
+    width: 710px;
+    height: 300px;
+    margin: 5% auto 0;
+    resize: none;
+    outline: none;
+}
+
 .keyboard {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     width: 695px;
-    margin: 30% auto;
+    margin:  auto;
     background: rgb(0,0,0);
     background: linear-gradient(310deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.43461134453781514) 47%, rgba(82,226,255,1) 100%);
     padding: 10px;
     opacity: 0.8;
-    border-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .keyboard__buttons {
@@ -35,6 +45,12 @@
     margin: 3px;
     transition: .1s ease-in;
     box-shadow: 1px 1px 1px 1px black;
+}
+
+.active {
+    background: linear-gradient(310deg, rgb(65, 49, 49) 0%, rgba(0,0,0,0.43461134453781514) 47%, rgb(82, 62, 62) 100%);
+    transform: translateX(1px) translateY(1px);
+    box-shadow: none;
 }
 
 .keyboard__button:hover {
