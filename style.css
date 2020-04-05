@@ -10,6 +10,15 @@
     font-weight: 500;
 }
 
+.info {
+    width: 710px;
+    margin: 1% auto 0;  
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
 .keyboard {
     display: flex;
     flex-wrap: wrap;

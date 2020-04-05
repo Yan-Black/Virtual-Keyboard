@@ -75,10 +75,8 @@ const specButton = new Button('spec')
 const longButton = new Button('long')
 
 class Keyboard {
-    constructor(language, shift, caps) {
+    constructor(language) {
         this.language = language
-        this.shift    = shift
-        this.capslock = caps
     }
 
     init() {
@@ -126,9 +124,12 @@ const keyboard = keysCollection.init()
 
 const textarea = document.createElement('textarea')
       textarea.classList.add('textarea')
-      
 
-document.body.append(textarea, keyboard)
+const details = document.createElement('p')
+      details.classList.add('info')
+      details.innerText = 'Клавиатура создана в операционной системе Windows \n Для переключения языка комбинация: "левые Ctrl + Alt"'
+
+document.body.append(textarea, keyboard, details)
 document.querySelector('.textarea').autofocus = true;
 
 function addActiveState(e) {
@@ -236,14 +237,6 @@ function addKeysClickableBehavior(e) {
             enableCapsLock(e)
             break;
         case 'Shift':
-            document.addEventListener('mousedown', e => {
-                //if (e.target.innerText !== 'Shift') return
-                enableShift(e)
-            }) 
-            document.addEventListener('mouseup', e => {
-                //if (e.target.innerText !== 'Shift') return
-                disableShift(e)
-            })
             break;
         case 'Enter':
             textarea.value += '\n';
@@ -319,6 +312,14 @@ document.addEventListener('keyup', e => {
     removeActiveState(e)
 })
 document.addEventListener('click', addKeysClickableBehavior)
+document.addEventListener('mousedown', e => {
+    if (e.target.innerText !== 'Shift') return
+    enableShift(e)
+}) 
+document.addEventListener('mouseup', e => {
+    if (e.target.innerText !== 'Shift') return
+    disableShift(e)
+})
 
 window.onload = () => {
     let keysStorage = localStorage.getItem('keysLang');
