@@ -151,38 +151,91 @@ function removeActiveState(e) {
 
 function changeLanguage(e) {
     if(e.ctrlKey && e.altKey) {
-        for(let i = 0; i < [...keyboard.children].length; i++){
-            if([...keyboard.children][i].innerText !== ruUnshiftedKeys[i]) {
-                [...keyboard.children][i].innerText = ruUnshiftedKeys[i]
-            } else {
-                [...keyboard.children][i].innerText = engUnshiftedKeys[i]
+        if([...keyboard.children][29].classList.contains('caps')) {
+            for(let i = 0; i < [...keyboard.children].length; i++){
+                if([...keyboard.children][i].innerText.match(/^[А-ЯЁ.{1}]$/)) {
+                    [...keyboard.children][i].innerText = engUnshiftedKeys[i]
+                    if([...keyboard.children][i].innerText.match(/^[a-zа-яё{1}]$/)){
+                        [...keyboard.children][i].innerText = [...keyboard.children][i].innerText.toUpperCase()
+                    }      
+                } else {
+                    [...keyboard.children][i].innerText = ruUnshiftedKeys[i] 
+                    if([...keyboard.children][i].innerText.match(/^[а-яё.{1}]$/)){
+                        [...keyboard.children][i].innerText = [...keyboard.children][i].innerText.toUpperCase()
+                    }
+                }
+            }
+        } else {
+            for(let i = 0; i < [...keyboard.children].length; i++){
+                if([...keyboard.children][i].innerText !== ruUnshiftedKeys[i]) {
+                    [...keyboard.children][i].innerText = ruUnshiftedKeys[i]
+                } else {
+                    [...keyboard.children][i].innerText = engUnshiftedKeys[i]
+                }
             }
         }
     }
 }
 
 function enableShift(e) {
-    if((e.code === 'ShiftLeft' || e.code === 'ShiftRight') && [...keyboard.children][15].innerText === 'q' || e.target.innerText === 'Shift' && [...keyboard.children][15].innerText === 'q') {
-        for(let i = 0; i < [...keyboard.children].length; i++){
-            [...keyboard.children][i].innerText = engShiftedKeys[i]
+    if((e.code === 'ShiftLeft' || e.code === 'ShiftRight') && [...keyboard.children][15].innerText.match(/^[Qq{1}]$/) || e.target.innerText === 'Shift' && [...keyboard.children][15].innerText.match(/^[Qq{1}]$/)) {
+         if([...keyboard.children][29].classList.contains('caps')) {
+            for(let i = 0; i < [...keyboard.children].length; i++){
+                [...keyboard.children][i].innerText = engShiftedKeys[i]
+                if([...keyboard.children][i].innerText.match(/^[A-ZА-ЯЁ{1}]$/)){
+                    [...keyboard.children][i].innerText = [...keyboard.children][i].innerText.toLowerCase()
+                }
+            }
+        } else {
+            for(let i = 0; i < [...keyboard.children].length; i++){
+                [...keyboard.children][i].innerText = engShiftedKeys[i]
+            }
         }
     }
-    else if((e.code === 'ShiftLeft' || e.code === 'ShiftRight') && [...keyboard.children][15].innerText === 'й' || e.target.innerText === 'Shift' && [...keyboard.children][15].innerText === 'й') {
-        for(let i = 0; i < [...keyboard.children].length; i++){
-            [...keyboard.children][i].innerText = ruShiftedKeys[i]
+    else if((e.code === 'ShiftLeft' || e.code === 'ShiftRight') && [...keyboard.children][15].innerText.match(/^[Йй{1}]$/) || e.target.innerText === 'Shift' && [...keyboard.children][15].innerText.match(/^[Йй{1}]$/)) {
+        if([...keyboard.children][29].classList.contains('caps')) {
+            for(let i = 0; i < [...keyboard.children].length; i++){
+                [...keyboard.children][i].innerText = ruShiftedKeys[i]
+                if([...keyboard.children][i].innerText.match(/^[A-ZА-ЯЁ{1}]$/)){
+                    [...keyboard.children][i].innerText = [...keyboard.children][i].innerText.toLowerCase()
+                }
+            }
+        } else {
+            for(let i = 0; i < [...keyboard.children].length; i++){
+                [...keyboard.children][i].innerText = ruShiftedKeys[i]
+            }
         }
-    }
+     }
 }
 
 function disableShift(e) {
-    if((e.code === 'ShiftLeft' || e.code === 'ShiftRight') && [...keyboard.children][15].innerText === 'Q' || e.target.innerText === 'Shift' && [...keyboard.children][15].innerText === 'Q') {
-        for(let i = 0; i < [...keyboard.children].length; i++){
-            [...keyboard.children][i].innerText = engUnshiftedKeys[i]
+    if((e.code === 'ShiftLeft' || e.code === 'ShiftRight') && [...keyboard.children][15].innerText.match(/^[Qq{1}]$/) || e.target.innerText === 'Shift' && [...keyboard.children][15].innerText.match(/^[Qq{1}]$/) ) {
+        if([...keyboard.children][29].classList.contains('caps')) {
+            for(let i = 0; i < [...keyboard.children].length; i++){
+                [...keyboard.children][i].innerText = engUnshiftedKeys[i]
+                if([...keyboard.children][i].innerText.match(/^[a-zа-яё{1}]$/)){
+                    [...keyboard.children][i].innerText = [...keyboard.children][i].innerText.toUpperCase()
+                }
+            }
+        } else {
+            
+            for(let i = 0; i < [...keyboard.children].length; i++){
+                [...keyboard.children][i].innerText = engUnshiftedKeys[i]
+             }
         }
     }
-    else if((e.code === 'ShiftLeft' || e.code === 'ShiftRight') && [...keyboard.children][15].innerText === 'Й' || e.target.innerText === 'Shift' && [...keyboard.children][15].innerText === 'Й') {
-        for(let i = 0; i < [...keyboard.children].length; i++){
-            [...keyboard.children][i].innerText = ruUnshiftedKeys[i]
+    else if((e.code === 'ShiftLeft' || e.code === 'ShiftRight') && [...keyboard.children][15].innerText.match(/^[Йй{1}]$/) || e.target.innerText === 'Shift' && [...keyboard.children][15].innerText.match(/^[Йй{1}]$/)) {
+        if([...keyboard.children][29].classList.contains('caps')) {
+            for(let i = 0; i < [...keyboard.children].length; i++){
+                [...keyboard.children][i].innerText = ruUnshiftedKeys[i]
+                if([...keyboard.children][i].innerText.match(/^[a-zа-яё{1}]$/)){
+                    [...keyboard.children][i].innerText = [...keyboard.children][i].innerText.toUpperCase()
+                }
+            }
+        } else {
+            for(let i = 0; i < [...keyboard.children].length; i++){
+                [...keyboard.children][i].innerText = ruUnshiftedKeys[i]
+            }
         }
     }
 }
