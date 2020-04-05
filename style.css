@@ -5,6 +5,9 @@
     margin: 5% auto 0;
     resize: none;
     outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .keyboard {
@@ -51,6 +54,10 @@
     background: linear-gradient(310deg, rgb(65, 49, 49) 0%, rgba(0,0,0,0.43461134453781514) 47%, rgb(82, 62, 62) 100%);
     transform: translateX(1px) translateY(1px);
     box-shadow: none;
+}
+
+.caps {
+    background: linear-gradient(310deg, rgb(172, 28, 28) 0%, rgba(0, 0, 0, 0.435) 47%, rgb(184, 88, 88) 100%);
 }
 
 .keyboard__button:hover {
