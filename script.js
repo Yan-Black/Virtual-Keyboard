@@ -269,6 +269,10 @@ function addKeysClickableBehavior(e) {
                 textarea.setRangeText('', textarea.selectionStart - 1, textarea.selectionEnd, "end");
                 textarea.focus();
             }
+            else if(textarea.selectionStart === 0) {
+                textarea.setRangeText('', textarea.selectionStart, textarea.selectionEnd, "end");
+                textarea.focus();
+            }
             break;
         case 'Del':
             if(textarea.selectionStart !== textarea.value.length) {
@@ -309,6 +313,10 @@ function addKeysOnRealKeyboardPressBehavior(e) {
         case 'Backspace':
             if(textarea.selectionStart !== 0) {
                 textarea.setRangeText('', textarea.selectionStart - 1, textarea.selectionEnd, "end");
+                textarea.focus();
+            }
+            else if(textarea.selectionStart === 0) {
+                textarea.setRangeText('', textarea.selectionStart, textarea.selectionEnd, "end");
                 textarea.focus();
             }
             break;
