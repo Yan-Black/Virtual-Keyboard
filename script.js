@@ -265,8 +265,12 @@ function addKeysClickableBehavior(e) {
     if(!target.getAttribute('data-code') || target.innerText === 'Ctrl' || target.innerText === 'Win' || target.innerText === 'Alt') return
     switch(target.innerText) {
         case 'Backspace':
-            if(textarea.selectionStart !== 0) {
+            if(textarea.selectionStart !== 0 && textarea.selectionStart === textarea.selectionEnd) {
                 textarea.setRangeText('', textarea.selectionStart - 1, textarea.selectionEnd, "end");
+                textarea.focus();
+            }
+            else if(textarea.selectionStart !== textarea.selectEnd) {
+                textarea.setRangeText('', textarea.selectionStart, textarea.selectionEnd , "end");
                 textarea.focus();
             }
             else if(textarea.selectionStart === 0) {
@@ -311,8 +315,12 @@ function addKeysClickableBehavior(e) {
 function addKeysOnRealKeyboardPressBehavior(e) {
     switch(e.code) {
         case 'Backspace':
-            if(textarea.selectionStart !== 0) {
+            if(textarea.selectionStart !== 0 && textarea.selectionStart === textarea.selectionEnd) {
                 textarea.setRangeText('', textarea.selectionStart - 1, textarea.selectionEnd, "end");
+                textarea.focus();
+            }
+            else if(textarea.selectionStart !== textarea.selectionEnd) {
+                textarea.setRangeText('', textarea.selectionStart, textarea.selectionEnd , "end");
                 textarea.focus();
             }
             else if(textarea.selectionStart === 0) {
