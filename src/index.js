@@ -1,8 +1,8 @@
-
 import {
   keyCodes, engUnshiftedKeys, engShiftedKeys, ruUnshiftedKeys, ruShiftedKeys,
-} from './Keys.js';
-import { Keyboard } from './Keyboard.js';
+} from './constants/Keys';
+import Keyboard from './components/Keyboard';
+import './style.css';
 
 const lang = ['eng', 'ru'];
 const keysCollection = new Keyboard(lang[0]);
@@ -93,7 +93,7 @@ function enableShift(e) {
         keyboardChildren[i].innerText = engShiftedKeys[i];
       }
     }
-  } else if (keyQ.innerText.match(regexRus) 
+  } else if (keyQ.innerText.match(regexRus)
   && ((e.code === 'ShiftLeft' || e.code === 'ShiftRight') || e.target.innerText === 'Shift')) {
     if (capsKey.classList.contains('caps')) {
       for (let i = 0; i < keyboardChildren.length; i++) {
@@ -125,7 +125,7 @@ function disableShift(e) {
         keyboardChildren[i].innerText = engUnshiftedKeys[i];
       }
     }
-  } else if (keyQ.innerText.match(regexRus) 
+  } else if (keyQ.innerText.match(regexRus)
   && ((e.code === 'ShiftLeft' || e.code === 'ShiftRight') || e.target.innerText === 'Shift')) {
     if (capsKey.classList.contains('caps')) {
       for (let i = 0; i < keyboardChildren.length; i++) {

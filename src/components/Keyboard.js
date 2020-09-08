@@ -1,19 +1,22 @@
-import { keyCodes, engUnshiftedKeys, engShiftedKeys, ruUnshiftedKeys, ruShiftedKeys } from './Keys.js';
-import { Button } from './Button.js';
+import { engUnshiftedKeys, ruUnshiftedKeys } from '../constants/Keys';
+import Button from './Button';
 
 const charButton = new Button('char');
 const specButton = new Button('spec');
 const longButton = new Button('long');
 
-export class Keyboard {
+export default class Keyboard {
   constructor(language) {
     this.language = language;
   }
 
   init() {
     let arr = [];
-    this.language === 'eng' ? arr = engUnshiftedKeys : arr = ruUnshiftedKeys;
-
+    if (this.language === 'eng') {
+      arr = engUnshiftedKeys;
+    } else {
+      arr = ruUnshiftedKeys;
+    }
     const keyboard = document.createElement('div');
     keyboard.classList.add('keyboard');
 
