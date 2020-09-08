@@ -1,6 +1,6 @@
 Vanilla JS project: **Virtual Keyboard**.
 
-#### Project deploy link [Virtual-Keyboard](https://github.com/Yan-Black/Virtual-Keyboard/tree/gh-pages).
+#### Project deploy link [Virtual-Keyboard](https://virtual-keyboard-yan-black.netlify.app/).
 
 ## Implemented features
 * Сompletely repeats the functionality of the physical keyboard
